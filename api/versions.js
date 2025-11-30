@@ -6,7 +6,6 @@ const MODS_PATH = 'mods/version';
 
 module.exports = async (req, res) => {
     try {
-        // Fetch the mods/version folder contents
         const contentsUrl = `${GITHUB_API_BASE}/repos/${GITHUB_REPO}/contents/${MODS_PATH}`;
         const headers = {
             'Accept': 'application/vnd.github.v3+json',
@@ -25,12 +24,10 @@ module.exports = async (req, res) => {
 
         const contents = await response.json();
 
-        // Filter for directories that match version format
         const versions = contents
             .filter(item => item.type === 'dir' && /^\d+\.\d+(\.\d+)?$/.test(item.name))
             .map(item => item.name)
             .sort((a, b) => {
-                // Sort versions descending (newest first)
                 const partsA = a.split('.').map(Number);
                 const partsB = b.split('.').map(Number);
                 for (let i = 0; i < Math.max(partsA.length, partsB.length); i++) {
@@ -49,10 +46,9 @@ module.exports = async (req, res) => {
 
     } catch (error) {
         console.error('Error:', error);
-        res.status(500).json({ 
+        res.status(500).json({
             error: 'Failed to fetch versions',
-            message: error.message 
+            message: error.message
         });
     }
 };
-
