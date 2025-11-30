@@ -1,23 +1,17 @@
 {
   "version": 2,
-  "builds": [
+  "rewrites": [
     {
-      "src": "api/**/*.js",
-      "use": "@vercel/node"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/version/(.+)",
-      "dest": "/api/version/[version]?version=$1"
+      "source": "/version/:version",
+      "destination": "/api/version?version=:version"
     },
     {
-      "src": "/versions",
-      "dest": "/api/versions"
+      "source": "/versions",
+      "destination": "/api/versions"
     },
     {
-      "src": "/",
-      "dest": "/api/index"
+      "source": "/",
+      "destination": "/api/index"
     }
   ],
   "headers": [

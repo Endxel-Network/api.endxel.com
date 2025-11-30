@@ -1,12 +1,12 @@
 const fetch = require('node-fetch');
 const archiver = require('archiver');
-const { PassThrough } = require('stream');
 
 const GITHUB_REPO = 'Endxel-Network/Mods';
 const GITHUB_API_BASE = 'https://api.github.com';
 
 module.exports = async (req, res) => {
-    const { version } = req.query;
+    // Get version from query param
+    const version = req.query.version || req.query.v;
 
     if (!version) {
         return res.status(400).json({ error: 'Version parameter is required' });
