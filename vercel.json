@@ -6,6 +6,14 @@
       "destination": "/api/version?version=:version"
     },
     {
+      "source": "/version",
+      "destination": "/api/version"
+    },
+    {
+      "source": "/version/",
+      "destination": "/api/version"
+    },
+    {
       "source": "/versions",
       "destination": "/api/versions"
     },
