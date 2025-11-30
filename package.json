@@ -1,0 +1,14 @@
+{
+  "name": "endxel-mods-api",
+  "version": "1.0.0",
+  "description": "Endxel Mods API - Download Minecraft mods by version",
+  "private": true,
+  "dependencies": {
+    "archiver": "^6.0.1",
+    "node-fetch": "^2.7.0"
+  },
+  "engines": {
+    "node": "20.x"
+  }
+}
+
