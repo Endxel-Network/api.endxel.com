@@ -1,12 +1,13 @@
 const fetch = require('node-fetch');
 
-const GITHUB_REPO = 'Endxel-Network/Mods';
+const GITHUB_REPO = 'Endxel-Network/api.endxel.com';
 const GITHUB_API_BASE = 'https://api.github.com';
+const MODS_PATH = 'mods/version';
 
 module.exports = async (req, res) => {
     try {
-        // Fetch the root contents of the repo
-        const contentsUrl = `${GITHUB_API_BASE}/repos/${GITHUB_REPO}/contents`;
+        // Fetch the mods/version folder contents
+        const contentsUrl = `${GITHUB_API_BASE}/repos/${GITHUB_REPO}/contents/${MODS_PATH}`;
         const headers = {
             'Accept': 'application/vnd.github.v3+json',
             'User-Agent': 'Endxel-Mods-API'

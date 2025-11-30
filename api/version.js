@@ -1,8 +1,9 @@
 const fetch = require('node-fetch');
 const archiver = require('archiver');
 
-const GITHUB_REPO = 'Endxel-Network/Mods';
+const GITHUB_REPO = 'Endxel-Network/api.endxel.com';
 const GITHUB_API_BASE = 'https://api.github.com';
+const MODS_PATH = 'mods/version'; // Mods are stored in /mods/version/{version}/
 
 module.exports = async (req, res) => {
     // Get version from query param
@@ -19,7 +20,7 @@ module.exports = async (req, res) => {
 
     try {
         // Fetch the contents of the version folder from GitHub
-        const contentsUrl = `${GITHUB_API_BASE}/repos/${GITHUB_REPO}/contents/${version}`;
+        const contentsUrl = `${GITHUB_API_BASE}/repos/${GITHUB_REPO}/contents/${MODS_PATH}/${version}`;
         const headers = {
             'Accept': 'application/vnd.github.v3+json',
             'User-Agent': 'Endxel-Mods-API'
